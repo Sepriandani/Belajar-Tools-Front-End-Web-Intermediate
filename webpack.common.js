@@ -5,7 +5,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const htmlWebpackPluginConfig = {
   meta: {
-    viewport: 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0',
+    viewport:
+      'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0',
     'theme-color': '#4285f4',
   },
   templateParameters: {
@@ -16,7 +17,7 @@ const htmlWebpackPluginConfig = {
           <a class="nav-link" href="/">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Add Record</a>
+          <a class="nav-link" href="/transactions/add.html">Add Record</a>
         </li>
         <li class="nav-item dropdown d-none" id="userLoggedMenu">
           <a class="nav-link dropdown-toggle text-nowrap" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -78,6 +79,18 @@ module.exports = {
       title: 'Dashboard',
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/views/dashboard.html'),
+      ...htmlWebpackPluginConfig,
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Add Records',
+      filename: 'transactions/add.html',
+      template: path.resolve(__dirname, 'src/views/transactions/add.html'),
+      ...htmlWebpackPluginConfig,
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Edit Records',
+      filename: 'transactions/edit.html',
+      template: path.resolve(__dirname, 'src/views/transactions/edit.html'),
       ...htmlWebpackPluginConfig,
     }),
     new CopyWebpackPlugin({
