@@ -1,7 +1,13 @@
-import { html, nothing } from 'lit';
 import LitWithoutShadowDom from './base/LitWithoutShadowDom';
+import { html } from 'lit';
+import { msg, updateWhenLocaleChanges } from '@lit/localize';
  
 class NavLinkAuth extends LitWithoutShadowDom {
+  constructor() {
+    super();
+    updateWhenLocaleChanges(this);
+  }
+ 
   render() {
     return html`
       <li class="nav-item dropdown">
@@ -10,6 +16,7 @@ class NavLinkAuth extends LitWithoutShadowDom {
           href="#"
           role="button"
           data-bs-toggle="dropdown"
+          aria-expanded="false"
         >
           <div class="me-2 d-inline-block">
             <img
@@ -24,7 +31,7 @@ class NavLinkAuth extends LitWithoutShadowDom {
         </a>
         <ul class="dropdown-menu">
           <a class="dropdown-item" id="userLogOut">
-            Log Out
+            ${msg(`Keluar`)}
           </a>
         </ul>
       </li>
